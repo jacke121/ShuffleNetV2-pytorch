@@ -258,7 +258,7 @@ class ShuffleNetV2(nn.Module):
         x = self.fc(x)
         return F.log_softmax(x, dim=1)
 
-#这个是速度测试
+
 if __name__ == "__main__":
     """Testing
     """
@@ -279,7 +279,7 @@ if __name__ == "__main__":
     model5 = ShuffleNetV2(scale=2.0,num_classes=10, SE=True, residual=True)
     x3 = torch.randn(1, 3, 196, 196)
     print(model5(x3))
-
+    #这个是速度测试
     if __name__ == "__main__":
 
     # model1 = ShuffleNetV2()
