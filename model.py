@@ -258,7 +258,7 @@ class ShuffleNetV2(nn.Module):
         x = self.fc(x)
         return F.log_softmax(x, dim=1)
 
-
+#这个是速度测试
 if __name__ == "__main__":
     """Testing
     """
@@ -279,3 +279,32 @@ if __name__ == "__main__":
     model5 = ShuffleNetV2(scale=2.0,num_classes=10, SE=True, residual=True)
     x3 = torch.randn(1, 3, 196, 196)
     print(model5(x3))
+
+    if __name__ == "__main__":
+
+    # model1 = ShuffleNetV2()
+    # print(model1)
+    model = ShuffleNetV2(scale=0.5, in_channels=3, c_tag=0.5, num_classes=2, activation=nn.ReLU,
+                          SE=False, residual=False)
+    # print(model2)
+    # model3 = ShuffleNetV2(in_channels=2, num_classes=10)
+    # print(model3)
+    # x = torch.randn(1, 2, 224, 224)
+    # print(model3(x))
+    # model4 = ShuffleNetV2( num_classes=10, groups=3, c_tag=0.2)
+    # print(model4)
+    # model4_size = 769
+    # x2 = torch.randn(1, 3, model4_size, model4_size, )
+    # print(model4(x2))
+    # model5 = ShuffleNetV2(scale=2.0,num_classes=10, SE=True, residual=True)
+    # x3 = torch.randn(1, 3, 196, 196)
+    # print(model5(x3))
+
+    for i in range(101):
+        t1 = time.time()
+        x = torch.rand(1,3, 416, 416)
+        out3 = model(x)
+        # print(out3)
+        if i != 0:
+            cnt = time.time() - t1
+            print(cnt)
